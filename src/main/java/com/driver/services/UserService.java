@@ -14,8 +14,7 @@ public class UserService {
     UserRepository userRepository3;
 
     public User createUser(String username, String password){
-
-
+        return null;
     }
 
     public void deleteUser(int userId){
@@ -23,6 +22,6 @@ public class UserService {
     }
 
     public User updateUser(Integer id, String password){
-
+        return null;
     }
 }
