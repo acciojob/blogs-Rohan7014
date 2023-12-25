@@ -27,12 +27,11 @@ public class UserService {
     }
 
     public User updateUser(Integer id, String password)throws RuntimeException{
-//        Optional<User> userOptional=userRepository3.findById(id);
-//        if(!userOptional.isPresent()){
-//            throw new RuntimeException();
-//        }
-//        User user = userOptional.get();
-        User user=userRepository3.findById(id).get();
+        Optional<User> userOptional=userRepository3.findById(id);
+        if(!userOptional.isPresent()){
+            throw new RuntimeException();
+        }
+        User user = userOptional.get();
         user.setPassword(password);
         return user;
     }
