@@ -18,6 +18,9 @@ public class UserService {
         User user =new User();
         user.setUsername(username);
         user.setPassword(password);
+        user.setFirstName("test");
+        user.setLastName("test");
+
         userRepository3.save(user);
         return user;
     }
@@ -26,13 +29,14 @@ public class UserService {
         userRepository3.deleteById(userId);
     }
 
-    public User updateUser(Integer id, String password)throws RuntimeException{
+    public User updateUser(Integer id, String password){
         Optional<User> userOptional=userRepository3.findById(id);
-        if(!userOptional.isPresent()){
-            throw new RuntimeException();
+        User user=null;
+        if(userOptional.isPresent()){
+            user = userOptional.get();
+            user.setPassword(password);
+            userRepository3.save(user);
         }
-        User user = userOptional.get();
-        user.setPassword(password);
         return user;
     }
 }

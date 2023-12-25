@@ -16,7 +16,7 @@ public class UserController {
     @PostMapping("/create")
     public ResponseEntity<Void> createUser(@RequestParam String username, @RequestParam String password) {
         // create a new user with given username and password
-        userService.createUser(username,password);
+        User user=userService.createUser(username,password);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -28,9 +28,9 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Void> updateUser(@RequestParam Integer id, @RequestParam String password) {
+    public ResponseEntity<User> updateUser(@RequestParam Integer id, @RequestParam String password) {
         // update password of given user
-        userService.updateUser(id,password);
-        return new ResponseEntity<>(HttpStatus.OK);
+        User user=userService.updateUser(id,password);
+        return new ResponseEntity<>(user,HttpStatus.OK);
     }
 }
